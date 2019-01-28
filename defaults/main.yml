@@ -1,0 +1,84 @@
+---
+#backupninja_encryption_password: "REPLACE_ME_WITH_A_STRONG_PASSWORD"
+backupninja_reportemail: "root"
+backupninja_reportsuccess: "yes"
+backupninja_reportinfo: "yes"
+backupninja_reportwarning: "yes"
+backupninja_reportspace: "yes"
+backupninja_reporthost: ""
+backupninja_reportuser: "ninja"
+backupninja_reportdir: "/var/lib/backupninja/reports"
+backupninja_admingroup: "adm"
+backupninja_logfile: "/var/log/backupninja.{{ansible_hostname}}.log"
+backupninja_configdir: "/etc/backup.d"
+backupninja_scriptdir: "/usr/share/backupninja"
+backupninja_Debian_libdir: "/usr/lib/backupninja"
+backupninja_RedHat_libdir: "/usr/libexec/backupninja"
+
+backupninja_usecolors: "yes"
+backupninja_when: "everyday at 02:00"
+backupninja_vservers: "no"
+backupninja_increments: 30
+backupninja_keep: 60
+backupninja_incremental: "yes"
+backupninja_keepincroffulls: "2"
+backupninja_bandwidthlimit: ""
+backupninja_sshoptions: ""
+backupninja_duplicity_options: "--volsize=1000"
+backupninja_rdiff_directory: /var/backup/dojo/
+backupninja_rdiff_host:
+backupninja_rdiff_user: root
+# MySQL Backups (space seperated DB names)
+backupninja_mysql_databases:    "all"
+backupninja_mysql_backupdir:    "/var/backups/mysql"
+backupninja_mysql_compress:     "yes"
+backupninja_mysql_user:         "root"
+backupninja_debian_mysql_configfile:   "/etc/mysql/debian.cnf"
+backupninja_redhat_mysql_configfile: etc/my.cnf.d/server.cnf
+# Postgres backup options
+backupninja_pgsql_backupdir:    "/var/backups/postgres"
+backupninja_pgsql_databases:    "all"
+backupninja_pgsql_compress:     "yes"
+backupninja_pgsql_format:       "plain"
+
+# Overrule or append to these for the base configuration
+backupninja_global_include_paths:
+    - "/var/spool/cron/"
+    - "/var/backups"
+    - "/var/www"
+#    - "/root"
+#    - "/home"
+    - "/usr/local"
+    #- "/var/lib/dpkg/status*"
+
+backupninja_global_exclude_paths:
+    - "/home/*/.gnupg"
+    - "/home/*/.local/share/Trash"
+    - "/home/*/.Trash"
+    - "/home/*/.thumbnails"
+    - "/var/cache/backupninja/duplicity"
+    - "/proc"
+    - "/dev"
+    - "/sys"
+    - "/lost+found"
+    - "/tmp"
+    - "/media"
+    - "/mnt"
+
+# Overrule these on your specific hosts or groups
+backupninja_include_paths: []
+backupninja_exclude_paths: []
+
+backupninja_support_mongodb: false
+backupninja_default_jobs:
+#  - "90.dup"
+#  - "99-report.sh"
+backupninja_backup_templates:
+  - "90.rdiff"
+  - "20.mysql"
+# Replace paramiko with a version that doesn't print a deprecation warning
+backupninja_hotpatch_paramiko: false
+
+enable_backups: true
+backup_name: root
+backupninja_pubkey:

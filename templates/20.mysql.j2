@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+
+hotcopy = no
+sqldump = yes
+compress = {{backupninja_mysql_compress}}
+dbhost = localhost
+backupdir = {{backupninja_mysql_backupdir}}
+databases = {{backupninja_mysql_databases|default('all')}}
+user = {{backupninja_mysql_user}}
+sqldumpoptions = --single-transaction --complete-insert --add-drop-table --quick --quote-names
